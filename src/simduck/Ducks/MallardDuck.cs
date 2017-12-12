@@ -5,7 +5,7 @@ namespace simduck.Ducks
 {
     public class MallardDuck : Duck
     {
-        public MallardDuck() : base(new FlyWithWings(), new LoudQuack())       
+        public MallardDuck() : base(new FlyWithRocket(), new LoudQuack())       
         {            
         }
 
