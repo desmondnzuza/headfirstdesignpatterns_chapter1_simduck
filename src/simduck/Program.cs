@@ -1,11 +1,43 @@
 ﻿using System;
+using simduck.Behaviours;
 using simduck.Ducks;
+using simduck.Equipment;
 
 namespace simduck
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            
+            RunEquipment();
+            RunDucks();            
+
+            Console.WriteLine("Bye Bye!!");
+        }
+
+        private static void RunEquipment()
+        {
+            var silence = new SilentQuack();
+            var tools = new DuckCall[]
+            {
+                new SteelDuckCall(),
+                new WoodenDuckCall()
+            };
+
+            foreach(var tool in tools)
+            {
+                Console.Write($"{tool.Description()} Says: ");
+                tool.MakeSound();
+                tool.ChangeQuackBehaviour(silence); 
+                Console.WriteLine(string.Empty);
+                Console.Write($"{tool.Description()} Now Says: ");           
+                tool.MakeSound();
+                Console.WriteLine(string.Empty);
+            }
+        }
+
+        private static void RunDucks()
         {
             Duck duck = null;
             bool exitApplication = false;
@@ -39,8 +71,6 @@ namespace simduck
                 }
                 Console.WriteLine(string.Empty);
             }while(!exitApplication);
-
-            Console.WriteLine("Bye Bye!!");
         }
     }
 }
